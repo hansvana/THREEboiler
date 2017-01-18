@@ -4,5 +4,7 @@ $primary-color: #fff;
 body {
   font: 100% $font-stack;
   color: $primary-color;
-  background-color: #BADA55;
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
 }

@@ -1,13 +1,24 @@
-const ImportedClass = require('./module.es6');
+const View = require('./view.es6');
+const World = require('./world.es6');
 
-class Test {
+class Controller {
     constructor(a, b) {
-        this._a = a;
-        this._b = b;
-        this._c = new ImportedClass();
+        this.view = new View();
+        this.world = new World();
+
+        this.mainLoop();
+    }
+
+    mainLoop() {
+      window.requestAnimationFrame(() => {
+       this.mainLoop();
+      });
+
+      this.world.update();
+      this.view.render(this.world.scene);
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    let t = new Test(0,0);
+document.addEventListener("DOMContentLoaded", e => {
+    let c = new Controller();
 });
